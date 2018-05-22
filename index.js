@@ -3,12 +3,16 @@ const parent = document.querySelector(".container");
 
 build_data_table(parent, data);
 
+// Get handles on inputs
 const dateSearch = document.querySelector('.search[name="timestamp"]');
 const commentSearch = document.querySelector('.search[name="comment"]');
 const selectSearches = document.querySelectorAll('select.search');
 const textSearches = document.querySelectorAll('input.search');
 const allSearches = document.querySelectorAll(".search");
+const clearButton = document.querySelector(".clear");
+const rows = document.querySelectorAll("tr");
 
+// Setup inputs and add event listeners
 textSearches.forEach(input => input.addEventListener("keyup", filter_table));
 
 selectSearches.forEach(select => {
@@ -22,8 +26,12 @@ selectSearches.forEach(select => {
   select.addEventListener("change", filter_table);
 });
 
+clearButton.addEventListener("click", () => {
+  allSearches.forEach(search => search.value = "");
+  show_all(rows);
+});
+
 function filter_table() {
-  const rows = document.querySelectorAll("tr");
   data.forEach((record, ind) => {
     if (matches_all_searches(allSearches, record)) {
       rows[ind + 1].style.display = "";
@@ -31,6 +39,10 @@ function filter_table() {
       rows[ind + 1].style.display = "none";
     }
   });
+}
+
+function show_all(items) {
+  items.forEach(item => item.style.display = "");
 }
 
 function matches_all_searches(searchInputs, record) {
