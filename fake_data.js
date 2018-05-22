@@ -1,4 +1,4 @@
-[{"timestamp":"2017-06-15T22:20:57Z","city":"Carlsbad","state":"California","country":"United States","shape":"2XL","comment":"Future-proofed maximized policy"},
+const data = [{"timestamp":"2017-06-15T22:20:57Z","city":"Carlsbad","state":"California","country":"United States","shape":"2XL","comment":"Future-proofed maximized policy"},
 {"timestamp":"2018-04-14T08:56:13Z","city":"Rochester","state":"New York","country":"United States","shape":"M","comment":"Phased 4th generation algorithm"},
 {"timestamp":"2017-06-18T04:22:01Z","city":"Columbus","state":"Ohio","country":"United States","shape":"3XL","comment":"Expanded context-sensitive access"},
 {"timestamp":"2017-09-18T09:36:32Z","city":"Philadelphia","state":"Pennsylvania","country":"United States","shape":"S","comment":"Multi-lateral logistical open system"},
@@ -997,4 +997,4 @@
 {"timestamp":"2017-12-29T22:41:24Z","city":"Raleigh","state":"North Carolina","country":"United States","shape":"XS","comment":"Realigned asynchronous analyzer"},
 {"timestamp":"2017-06-01T12:21:47Z","city":"Lakewood","state":"Washington","country":"United States","shape":"L","comment":"Ergonomic zero administration structure"},
 {"timestamp":"2018-04-20T04:19:46Z","city":"Worcester","state":"Massachusetts","country":"United States","shape":"L","comment":"Inverse systemic synergy"},
-{"timestamp":"2017-09-17T21:09:31Z","city":"Roanoke","state":"Virginia","country":"United States","shape":"S","comment":"Business-focused multi-state support"}]
+{"timestamp":"2017-09-17T21:09:31Z","city":"Roanoke","state":"Virginia","country":"United States","shape":"S","comment":"Business-focused multi-state support"}];
