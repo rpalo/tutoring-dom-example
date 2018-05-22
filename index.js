@@ -3,25 +3,40 @@ const parent = document.querySelector(".container");
 
 build_data_table(parent, data);
 
-const columns = Object.keys(data[0]);
-const dateSearch = document.querySelector('.search[name="timestamp-search"]');
-dateSearch.addEventListener("keyup", filter_table_by(data, "timestamp"));
+const dateSearch = document.querySelector('.search[name="timestamp"]');
+const commentSearch = document.querySelector('.search[name="comment"]');
+const selectSearches = document.querySelectorAll('select.search');
+const textSearches = document.querySelectorAll('input.search');
+const allSearches = document.querySelectorAll(".search");
 
-function filter_table_by(data, column) {
-  const filter_table = function() {
-    const value = this.value;
-    const rows = document.querySelectorAll("tr");
-  
-    data.forEach((record, ind) => {
-      if (value == "" || data[ind][column].indexOf(value) >= 0) {
-        rows[ind + 1].style.display = "";
-      } else {
-        rows[ind + 1].style.display = "none";
-      }
-    });
-  }
+textSearches.forEach(input => input.addEventListener("keyup", filter_table));
 
-  return filter_table;
+selectSearches.forEach(select => {
+  const column = select.name;
+  const options = new Set(data.map(record => record[column]));
+  options.forEach(option => {
+    const optionElement = document.createElement("option")
+    optionElement.text = option;
+    select.options.add(optionElement);
+  });
+  select.addEventListener("change", filter_table);
+});
+
+function filter_table() {
+  const rows = document.querySelectorAll("tr");
+  data.forEach((record, ind) => {
+    if (matches_all_searches(allSearches, record)) {
+      rows[ind + 1].style.display = "";
+    } else {
+      rows[ind + 1].style.display = "none";
+    }
+  });
+}
+
+function matches_all_searches(searchInputs, record) {
+  return [...searchInputs].every(search => {
+    return record[search.name].indexOf(search.value) >= 0;
+  });
 }
 
 function build_data_table(parent, data) {
