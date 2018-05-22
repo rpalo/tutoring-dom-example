@@ -45,10 +45,10 @@ function main(pageSize, dataset) {
 }
 
 function render(rows, dataset, filters, pageSize, page = 0) {
-  const toShow = filterTable(filters, dataset);
-  const pages = Math.ceil(toShow.length/pageSize);
+  const indicesToShow = filterTable(filters, dataset);
+  const pages = Math.ceil(indicesToShow.length/pageSize);
   showPagination(pages);
-  const thisPage = toShow.slice(pageSize*page, pageSize*(page + 1));
+  const thisPage = indicesToShow.slice(pageSize*page, pageSize*(page + 1));
   rows.forEach((row, ind) => {
     if (thisPage.includes(ind)) {
       row.style.display = "";
